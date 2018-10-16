@@ -19,8 +19,8 @@
  * Authored by: Nathan Wallace <nathan@nosuchthingastwo.com>
  */
 
-class MyApp : Gtk.Application {
-  public MyApp() {
+class Fanboy : Gtk.Application {
+  public Fanboy() {
     Object(
       application_id: "com.github.nwallace.fanboy",
       flags: ApplicationFlags.FLAGS_NONE
@@ -29,19 +29,29 @@ class MyApp : Gtk.Application {
 
   protected override void activate() {
     var window = new Gtk.ApplicationWindow(this);
-    var hello_button = new Gtk.Button.with_label("Click me!");
-    hello_button.margin = 12;
-    hello_button.clicked.connect(() => {
-      hello_button.label = "Hello World!";
-      hello_button.sensitive = false;
-    });
-    window.set_title("Welcome to GNOME");
+    window.set_title("Fanboy");
     window.set_default_size(300, 300);
-    window.add(hello_button);
+
+    var grid = new Gtk.Grid();
+    grid.orientation = Gtk.Orientation.VERTICAL;
+    grid.row_spacing = 6;
+
+    var button = new Gtk.Button.with_label("Poke me");
+    var label = new Gtk.Label(null);
+
+    button.clicked.connect(() => {
+      label.label = "Ouch!";
+      button.sensitive = false;
+    });
+
+    grid.add(button);
+    grid.add(label);
+
+    window.add(grid);
     window.show_all();
   }
 }
 
 public int main(string[] args) {
-  return new MyApp().run(args);
+  return new Fanboy().run(args);
 }
