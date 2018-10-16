@@ -33,19 +33,35 @@ class Fanboy : Gtk.Application {
     window.set_default_size(300, 300);
 
     var grid = new Gtk.Grid();
-    grid.orientation = Gtk.Orientation.VERTICAL;
     grid.row_spacing = 6;
+    grid.column_spacing = 6;
 
-    var button = new Gtk.Button.with_label("Poke me");
-    var label = new Gtk.Label(null);
+    var hello_button = new Gtk.Button.with_label("Say Hi");
+    var hello_label = new Gtk.Label(null);
 
-    button.clicked.connect(() => {
-      label.label = "Ouch!";
-      button.sensitive = false;
+    var rotate_button = new Gtk.Button.with_label("Rotate");
+    var rotate_label = new Gtk.Label("Horizontal");
+
+    hello_button.clicked.connect(() => {
+      hello_label.label = "Howdy!";
+      hello_button.sensitive = false;
     });
 
-    grid.add(button);
-    grid.add(label);
+    rotate_button.clicked.connect(() => {
+      if (grid.orientation == Gtk.Orientation.HORIZONTAL) {
+        rotate_label.label = "Vertical";
+        grid.orientation = Gtk.Orientation.VERTICAL;
+      } else {
+        rotate_label.label = "Horizontal";
+        grid.orientation = Gtk.Orientation.HORIZONTAL;
+      }
+    });
+
+
+    grid.attach(hello_button, 0, 0, 1, 1); // widget, column #, row #, colspan, rowspan
+    grid.attach_next_to(hello_label, hello_button, Gtk.PositionType.RIGHT, 1, 1);
+    grid.attach(rotate_button, 0, 1, 1, 1);
+    grid.attach_next_to(rotate_label, rotate_button, Gtk.PositionType.RIGHT, 1, 1);
 
     window.add(grid);
     window.show_all();
