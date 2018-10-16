@@ -1,6 +1,10 @@
 # project name and programming language
 project('com.github.nwallace.fanboy', 'vala', 'c')
 
+i18n = import('i18n')
+
+add_global_arguments('-DGETTEXT_PACKAGE=@0@'.format(meson.project_name()), language:'c')
+
 # Create a new executable, list the files we want to compile, list the dependencies we need, and install
 executable(
   meson.project_name(),
@@ -11,8 +15,14 @@ executable(
   install: true
 )
 
-# Install the .desktop file so the Applications Menu will see it
-install_data(
-  join_paths('data', meson.project_name() + '.desktop'),
+# Translate and install our .desktop file
+i18n.merge_file(
+  input: join_paths('data', meson.project_name() + '.desktop.in'),
+  output: meson.project_name() + '.desktop',
+  po_dir: join_paths(meson.source_root(), 'po'),
+  type: 'desktop',
+  install: true,
   install_dir: join_paths(get_option('datadir'), 'applications')
 )
+
+subdir('po')
