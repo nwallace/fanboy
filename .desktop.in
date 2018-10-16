@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=0.1
+Encoding=UTF-8
+Name=Fanboy
+GenericName=eSports VODs
+Comment=Watch eSports VODs
+Exec=com.github.nwallace.fanboy
+Icon=application-default-icon
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=AudioVideo;Video;Player;TV;
