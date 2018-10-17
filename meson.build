@@ -1,10 +1,21 @@
 # project name and programming language
 project('com.github.nwallace.fanboy', 'vala', 'c')
 
+gnome = import('gnome')
+
+sources = [
+  join_paths('src', 'Application.vala')
+] + gnome.compile_resources(
+  'resources',
+  join_paths('data', meson.project_name() + '.gresource.xml'),
+  source_dir: 'data',
+  c_name: 'resources'
+)
+
 # Create a new executable, list the files we want to compile, list the dependencies we need, and install
 executable(
   meson.project_name(),
-  'src/Application.vala',
+  sources,
   dependencies: [
     dependency('gtk+-3.0')
   ],

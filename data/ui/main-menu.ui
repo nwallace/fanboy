@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="FanboyMainMenu" parent="GtkApplicationWindow">
+    <property name="title" translatable="yes">Example Application</property>
+    <property name="default-width">360</property>
+    <property name="default-height">640</property>
+    <child type="titlebar">
+      <object class="GtkHeaderBar">
+        <property name="show-close-button">True</property>
+        <property name="title">Purism GTK+ 3 Examples</property>
+        <property name="visible">True</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel">
+        <property name="label">Hello, World!</property>
+        <property name="visible">True</property>
+        <attributes>
+          <attribute name="scale" value="2"/>
+          <attribute name="weight" value="bold"/>
+        </attributes>
+      </object>
+    </child>
+  </template>
+</interface>

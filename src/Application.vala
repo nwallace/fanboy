@@ -19,8 +19,15 @@
  * Authored by: Nathan Wallace <nathan@nosuchthingastwo.com>
  */
 
-class Fanboy : Gtk.Application {
-  public Fanboy() {
+[GtkTemplate (ui = "/com/github/nwallace/fanboy/ui/main-menu.ui")]
+class Fanboy.MainMenu : Gtk.ApplicationWindow {
+  public MainMenu(Gtk.Application app) {
+    Object(application: app);
+  }
+}
+
+class Fanboy.Application : Gtk.Application {
+  public Application() {
     Object(
       application_id: "com.github.nwallace.fanboy",
       flags: ApplicationFlags.FLAGS_NONE
@@ -28,46 +35,17 @@ class Fanboy : Gtk.Application {
   }
 
   protected override void activate() {
-    var window = new Gtk.ApplicationWindow(this);
-    window.set_title("Fanboy");
-    window.set_default_size(300, 300);
+    var window = active_window;
 
-    var grid = new Gtk.Grid();
-    grid.row_spacing = 6;
-    grid.column_spacing = 6;
+    if (window == null) {
+      window = new Fanboy.MainMenu(this);
+      window.destroy.connect(quit);
+    }
 
-    var hello_button = new Gtk.Button.with_label("Say Hi");
-    var hello_label = new Gtk.Label(null);
-
-    var rotate_button = new Gtk.Button.with_label("Rotate");
-    var rotate_label = new Gtk.Label("Horizontal");
-
-    hello_button.clicked.connect(() => {
-      hello_label.label = "Howdy!";
-      hello_button.sensitive = false;
-    });
-
-    rotate_button.clicked.connect(() => {
-      if (grid.orientation == Gtk.Orientation.HORIZONTAL) {
-        rotate_label.label = "Vertical";
-        grid.orientation = Gtk.Orientation.VERTICAL;
-      } else {
-        rotate_label.label = "Horizontal";
-        grid.orientation = Gtk.Orientation.HORIZONTAL;
-      }
-    });
-
-
-    grid.attach(hello_button, 0, 0, 1, 1); // widget, column #, row #, colspan, rowspan
-    grid.attach_next_to(hello_label, hello_button, Gtk.PositionType.RIGHT, 1, 1);
-    grid.attach(rotate_button, 0, 1, 1, 1);
-    grid.attach_next_to(rotate_label, rotate_button, Gtk.PositionType.RIGHT, 1, 1);
-
-    window.add(grid);
-    window.show_all();
+    window.present();
   }
 }
 
 public int main(string[] args) {
-  return new Fanboy().run(args);
+  return new Fanboy.Application().run(args);
 }
