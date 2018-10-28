@@ -19,33 +19,6 @@
  * Authored by: Nathan Wallace <nathan@nosuchthingastwo.com>
  */
 
-[GtkTemplate (ui = "/com/github/nwallace/fanboy/ui/main-menu.ui")]
-class Fanboy.MainMenu : Gtk.ApplicationWindow {
-  public MainMenu(Gtk.Application app) {
-    Object(application: app);
-  }
-}
-
-class Fanboy.Application : Gtk.Application {
-  public Application() {
-    Object(
-      application_id: "com.github.nwallace.fanboy",
-      flags: ApplicationFlags.FLAGS_NONE
-    );
-  }
-
-  protected override void activate() {
-    var window = active_window;
-
-    if (window == null) {
-      window = new Fanboy.MainMenu(this);
-      window.destroy.connect(quit);
-    }
-
-    window.present();
-  }
-}
-
 public int main(string[] args) {
   return new Fanboy.Application().run(args);
 }

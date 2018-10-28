@@ -4,7 +4,10 @@ project('com.github.nwallace.fanboy', 'vala', 'c')
 gnome = import('gnome')
 
 sources = [
-  join_paths('src', 'Application.vala')
+  join_paths('src', 'main.vala'),
+
+  join_paths('src', 'ui', 'application.vala'),
+  join_paths('src', 'ui', 'main-menu.vala')
 ] + gnome.compile_resources(
   'resources',
   join_paths('data', meson.project_name() + '.gresource.xml'),
