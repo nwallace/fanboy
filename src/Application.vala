@@ -29,10 +29,10 @@ class MyApp : Gtk.Application {
 
   protected override void activate() {
     var window = new Gtk.ApplicationWindow(this);
-    var hello_button = new Gtk.Button.with_label(_("Click me!"));
+    var hello_button = new Gtk.Button.with_label(_("Click me"));
     hello_button.margin = 12;
     hello_button.clicked.connect(() => {
-      hello_button.label = _("Hello World!");
+      hello_button.label = _("Hello World");
       hello_button.sensitive = false;
     });
     window.set_title(_("Welcome to GNOME"));
