@@ -11,18 +11,12 @@
         <property name="visible">True</property>
       </object>
     </child>
-    <child>
 
+    <child>
       <object class="GtkBox" id="tournament_list">
         <property name="orientation">vertical</property>
         <property name="visible">True</property>
-        <child>
-          <object class="FanboyTournamentListItem" id="list_item">
-            <property name="visible">True</property>
-          </object>
-        </child>
       </object>
-
     </child>
   </template>
 </interface>
