@@ -1,6 +1,7 @@
 // This file is part of Fanboy. License: GPL-3.0+.
 
 class Fanboy.Application : Gtk.Application {
+
   public Application() {
     Object(
       application_id: "com.github.nwallace.fanboy",
@@ -11,10 +12,8 @@ class Fanboy.Application : Gtk.Application {
   protected override void activate() {
     var window = active_window;
 
-    if (window == null) {
-      window = new Fanboy.MainMenu(this);
-      window.destroy.connect(quit);
-    }
+    window = new Fanboy.MainMenu(this);
+    window.destroy.connect(quit);
 
     window.present();
   }
