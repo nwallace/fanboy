@@ -17,7 +17,7 @@
         <property name="orientation">vertical</property>
         <property name="visible">True</property>
         <child>
-          <object class="GtkLabel" id="name_label">
+          <object class="FanboyTournamentListItem" id="list_item">
             <property name="visible">True</property>
           </object>
         </child>

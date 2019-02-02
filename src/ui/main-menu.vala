@@ -4,10 +4,10 @@
 class Fanboy.MainMenu : Gtk.ApplicationWindow {
 
   [GtkChild]
-  private Gtk.Label name_label;
+  private Fanboy.TournamentListItem list_item;
 
   public MainMenu(Gtk.Application app) {
     Object(application: app);
-    this.name_label.set_label("Big Major Number 1");
+    this.list_item.tournament_name = "Big Major Number 1";
   }
 }

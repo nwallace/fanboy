@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="FanboyTournamentListItem" parent="GtkEventBox">
+    <property name="visible">True</property>
+    <child>
+      <object class="GtkBox">
+        <property name="visible">True</property>
+        <child>
+          <object class="GtkImage">
+            <property name="visible">True</property>
+            <property name="stock">gtk-justify-center</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkLabel" id="name_label">
+            <property name="visible">True</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </template>
+</interface>
