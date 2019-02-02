@@ -1,7 +1,7 @@
 // This file is part of Fanboy. License: GPL-3.0+.
 
 [GtkTemplate (ui = "/com/github/nwallace/fanboy/ui/main-menu.ui")]
-class Fanboy.MainMenu : Gtk.ApplicationWindow {
+class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
 
   [GtkChild]
   private Gtk.Box tournament_list;
@@ -20,8 +20,8 @@ class Fanboy.MainMenu : Gtk.ApplicationWindow {
     register_tournament("6: Big Major Number 3");
   }
 
-  private Fanboy.TournamentListItem register_tournament(string name) {
-    var list_item = new Fanboy.TournamentListItem();
+  private Fanboy.UI.TournamentListItem register_tournament(string name) {
+    var list_item = new Fanboy.UI.TournamentListItem();
     list_item.tournament_name = name;
     this.tournament_list.add(list_item);
     return list_item;

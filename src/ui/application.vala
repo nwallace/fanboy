@@ -12,7 +12,7 @@ class Fanboy.Application : Gtk.Application {
   protected override void activate() {
     var window = active_window;
 
-    window = new Fanboy.MainMenu(this);
+    window = new Fanboy.UI.MainMenu(this);
     window.destroy.connect(quit);
 
     window.present();
