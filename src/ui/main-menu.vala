@@ -14,21 +14,13 @@ class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
   public MainMenu(Gtk.Application app, Fanboy.Remotes.Tournaments remote) {
     Object(application: app);
     this.remote = remote;
-    fetch_tournaments.begin((obj, res) => {
-      Gee.LinkedList<string> tournament_names = fetch_tournaments.end(res);
+    remote.get_tournaments.begin((obj, res) => {
+      Gee.LinkedList<string> tournament_names = remote.get_tournaments.end(res);
       this.tournament_list.remove(this.loading_spinner);
       foreach (string name in tournament_names) {
         register_tournament(name);
       }
     });
-  }
-
-  async Gee.LinkedList<string> fetch_tournaments() {
-    var tournament_names = new Gee.LinkedList<string>();
-    var retriever = remote.get_retriever(tournament_names, fetch_tournaments.callback);
-    new Thread<bool>("Tournaments retriever", retriever.run);
-    yield;
-    return tournament_names;
   }
 
   private Fanboy.UI.TournamentListItem register_tournament(string name) {
