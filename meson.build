@@ -6,6 +6,8 @@ gnome = import('gnome')
 sources = [
   join_paths('src', 'main.vala'),
 
+  join_paths('src', 'remotes', 'tournaments.vala'),
+
   join_paths('src', 'ui', 'application.vala'),
   join_paths('src', 'ui', 'main-menu.vala'),
   join_paths('src', 'ui', 'tournament-list-item.vala')
@@ -21,7 +23,8 @@ executable(
   meson.project_name(),
   sources,
   dependencies: [
-    dependency('gtk+-3.0')
+    dependency('gtk+-3.0'),
+    dependency('gee-0.8')
   ],
   install: true
 )

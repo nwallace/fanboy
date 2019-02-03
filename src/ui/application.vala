@@ -12,7 +12,8 @@ class Fanboy.Application : Gtk.Application {
   protected override void activate() {
     var window = active_window;
 
-    window = new Fanboy.UI.MainMenu(this);
+    var tournaments_remote = new Fanboy.Remotes.Tournaments();
+    window = new Fanboy.UI.MainMenu(this, tournaments_remote);
     window.destroy.connect(quit);
 
     window.present();
