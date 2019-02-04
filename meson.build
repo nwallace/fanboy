@@ -6,6 +6,7 @@ gnome = import('gnome')
 sources = [
   join_paths('src', 'main.vala'),
 
+  join_paths('src', 'remotes', 'client.vala'),
   join_paths('src', 'remotes', 'tournaments.vala'),
 
   join_paths('src', 'ui', 'application.vala'),
@@ -24,7 +25,9 @@ executable(
   sources,
   dependencies: [
     dependency('gtk+-3.0'),
-    dependency('gee-0.8')
+    dependency('gee-0.8'),
+    dependency('libsoup-2.4'),
+    dependency('json-glib-1.0')
   ],
   install: true
 )

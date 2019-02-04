@@ -2,17 +2,17 @@
 
 class Fanboy.Remotes.Tournaments {
 
+  const string REMOTE_URI = "https://jsonplaceholder.typicode.com/albums";
+
   public async Gee.LinkedList<string> get_tournaments() {
     SourceFunc callback = get_tournaments.callback;
     var tournament_names = new Gee.LinkedList<string>();
     ThreadFunc<bool> run = () => {
-      Thread.usleep(1000000);
-      tournament_names.add("1: Big Major Number 1");
-      tournament_names.add("2: Wee Minor Number 1");
-      tournament_names.add("3: Big Major Number 2");
-      tournament_names.add("4: Wee Minor Number 2");
-      tournament_names.add("5: Wee Minor Number 3");
-      tournament_names.add("6: Big Major Number 3");
+      var client = new Fanboy.Remotes.Client();
+      var response = client.get(REMOTE_URI);
+      foreach (string name in response.get_tournaments()) {
+        tournament_names.add(name);
+      }
       Idle.add((owned) callback);
       return true;
     };
