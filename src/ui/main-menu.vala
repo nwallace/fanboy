@@ -3,24 +3,21 @@
 [GtkTemplate (ui = "/com/github/nwallace/fanboy/ui/main-menu.ui")]
 class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
 
-  private Fanboy.Remotes.Tournaments remote;
-
   [GtkChild]
   private Gtk.Spinner loading_spinner;
 
   [GtkChild]
   private Gtk.Box tournament_list;
 
-  public MainMenu(Gtk.Application app, Fanboy.Remotes.Tournaments remote) {
+  public MainMenu(Gtk.Application app) {
     Object(application: app);
-    this.remote = remote;
-    remote.get_tournaments.begin((obj, res) => {
-      Gee.LinkedList<string> tournament_names = remote.get_tournaments.end(res);
-      this.tournament_list.remove(this.loading_spinner);
-      foreach (string name in tournament_names) {
-        register_tournament(name);
-      }
-    });
+  }
+
+  public void display_tournaments(Gee.LinkedList<string> tournament_names) {
+    this.tournament_list.remove(this.loading_spinner);
+    foreach (string name in tournament_names) {
+      register_tournament(name);
+    }
   }
 
   private Fanboy.UI.TournamentListItem register_tournament(string name) {
