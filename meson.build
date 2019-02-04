@@ -7,6 +7,7 @@ sources = [
   join_paths('src', 'main.vala'),
 
   join_paths('src', 'remotes', 'client.vala'),
+  join_paths('src', 'remotes', 'response.vala'),
   join_paths('src', 'remotes', 'tournaments.vala'),
 
   join_paths('src', 'ui', 'application.vala'),
