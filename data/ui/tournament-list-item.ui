@@ -6,9 +6,8 @@
       <object class="GtkBox">
         <property name="visible">True</property>
         <child>
-          <object class="GtkImage">
+          <object class="GtkImage" id="logo_image">
             <property name="visible">True</property>
-            <property name="stock">gtk-justify-center</property>
           </object>
         </child>
         <child>

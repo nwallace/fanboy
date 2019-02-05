@@ -28,8 +28,7 @@ class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
   }
 
   private Fanboy.UI.TournamentListItem display_tournament(Fanboy.Models.Tournament tournament) {
-    var list_item = new Fanboy.UI.TournamentListItem();
-    list_item.tournament_name = tournament.name;
+    var list_item = new Fanboy.UI.TournamentListItem(tournament);
     this.tournament_list.add(list_item);
     return list_item;
   }

@@ -15,7 +15,9 @@ sources = [
 
   join_paths('src', 'controllers', 'tournaments.vala'),
 
-  join_paths('src', 'models', 'tournament.vala')
+  join_paths('src', 'models', 'tournament.vala'),
+
+  join_paths('src', 'utils', 'images.vala')
 ] + gnome.compile_resources(
   'resources',
   join_paths('data', meson.project_name() + '.gresource.xml'),
