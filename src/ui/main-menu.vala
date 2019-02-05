@@ -13,10 +13,10 @@ class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
     Object(application: app);
   }
 
-  public void display_tournaments(Gee.LinkedList<string> tournament_names) {
+  public void display_tournaments(Gee.LinkedList<Fanboy.Models.Tournament> tournaments) {
     this.tournament_list.remove(this.loading_spinner);
-    foreach (string name in tournament_names) {
-      register_tournament(name);
+    foreach (Fanboy.Models.Tournament tournament in tournaments) {
+      display_tournament(tournament);
     }
   }
 
@@ -27,9 +27,9 @@ class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
     this.tournament_list.add(label);
   }
 
-  private Fanboy.UI.TournamentListItem register_tournament(string name) {
+  private Fanboy.UI.TournamentListItem display_tournament(Fanboy.Models.Tournament tournament) {
     var list_item = new Fanboy.UI.TournamentListItem();
-    list_item.tournament_name = name;
+    list_item.tournament_name = tournament.name;
     this.tournament_list.add(list_item);
     return list_item;
   }

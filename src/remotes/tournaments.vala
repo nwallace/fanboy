@@ -49,12 +49,13 @@ public class Fanboy.Remotes.Tournaments : Object {
       base(message, parsed_root);
     }
 
-    public Gee.LinkedList<string> get_tournaments() {
-      var names = new Gee.LinkedList<string>();
+    public Gee.LinkedList<Fanboy.Models.Tournament> get_tournaments() {
+      var tournaments = new Gee.LinkedList<Fanboy.Models.Tournament>();
       foreach (Json.Node tournament_data in this.parsed_root.get_array().get_elements()) {
-        names.add(tournament_data.get_object().get_string_member("title"));
+        var tournament = new Fanboy.Models.Tournament(tournament_data.get_object());
+        tournaments.add(tournament);
       }
-      return names;
+      return tournaments;
     }
   }
 }
