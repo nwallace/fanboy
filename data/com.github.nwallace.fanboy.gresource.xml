@@ -3,5 +3,6 @@
   <gresource prefix="/com/github/nwallace/fanboy">
     <file preprocess="xml-stripblanks">ui/main-menu.ui</file>
     <file preprocess="xml-stripblanks">ui/tournament-list-item.ui</file>
+    <file preprocess="xml-stripblanks">ui/web-image.ui</file>
   </gresource>
 </gresources>
