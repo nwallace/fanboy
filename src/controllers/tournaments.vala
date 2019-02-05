@@ -5,8 +5,12 @@ class Fanboy.Controllers.Tournaments {
   public void load_tournaments(Fanboy.UI.MainMenu ui) {
     var remote = new Fanboy.Remotes.Tournaments();
     remote.get_tournaments.begin((obj, res) => {
-      Gee.LinkedList<string> tournament_names = remote.get_tournaments.end(res);
-      ui.display_tournaments(tournament_names);
+      Fanboy.Remotes.Response response = remote.get_tournaments.end(res);
+      if (response.is_success()) {
+        ui.display_tournaments(((Fanboy.Remotes.Tournaments.SuccessResponse) response).get_tournaments());
+      } else {
+        ui.display_error(((Fanboy.Remotes.FailureResponse) response).error_message);
+      }
     });
   }
 }

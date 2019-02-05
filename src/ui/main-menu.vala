@@ -20,6 +20,13 @@ class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
     }
   }
 
+  public void display_error(string message) {
+    this.tournament_list.remove(this.loading_spinner);
+    var label = new Gtk.Label(@"Oops! $message");
+    label.visible = true;
+    this.tournament_list.add(label);
+  }
+
   private Fanboy.UI.TournamentListItem register_tournament(string name) {
     var list_item = new Fanboy.UI.TournamentListItem();
     list_item.tournament_name = name;
