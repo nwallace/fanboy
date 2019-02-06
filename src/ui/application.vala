@@ -12,11 +12,11 @@ class Fanboy.Application : Gtk.Application {
   protected override void activate() {
     var window = active_window;
 
-    window = new Fanboy.UI.MainMenu(this);
+    window = new Fanboy.UI.ApplicationWindow(this);
     window.destroy.connect(quit);
 
     var controller = new Fanboy.Controllers.Tournaments();
-    controller.load_tournaments((Fanboy.UI.MainMenu) window);
+    controller.load_tournaments((Fanboy.UI.ApplicationWindow) window);
 
     window.present();
   }

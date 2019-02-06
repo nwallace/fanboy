@@ -2,7 +2,7 @@
 
 class Fanboy.Controllers.Tournaments {
 
-  public void load_tournaments(Fanboy.UI.MainMenu ui) {
+  public void load_tournaments(Fanboy.UI.ApplicationWindow ui) {
     var remote = new Fanboy.Remotes.Tournaments();
     remote.get_tournaments.begin((obj, res) => {
       Fanboy.Remotes.Response response = remote.get_tournaments.end(res);

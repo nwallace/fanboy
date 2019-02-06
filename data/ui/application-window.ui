@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="FanboyUIMainMenu" parent="GtkApplicationWindow">
+  <template class="FanboyUIApplicationWindow" parent="GtkApplicationWindow">
     <property name="title" translatable="yes">Fanboy</property>
     <property name="default-width">360</property>
     <property name="default-height">640</property>

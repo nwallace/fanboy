@@ -1,7 +1,7 @@
 // This file is part of Fanboy. License: GPL-3.0+.
 
-[GtkTemplate (ui = "/com/github/nwallace/fanboy/ui/main-menu.ui")]
-class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
+[GtkTemplate (ui = "/com/github/nwallace/fanboy/ui/application-window.ui")]
+class Fanboy.UI.ApplicationWindow : Gtk.ApplicationWindow {
 
   [GtkChild]
   private Gtk.Spinner loading_spinner;
@@ -9,7 +9,7 @@ class Fanboy.UI.MainMenu : Gtk.ApplicationWindow {
   [GtkChild]
   private Gtk.Box tournament_list;
 
-  public MainMenu(Gtk.Application app) {
+  public ApplicationWindow(Gtk.Application app) {
     Object(application: app);
   }
 
