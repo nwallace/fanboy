@@ -32,10 +32,12 @@ executable(
   sources,
   dependencies: [
     dependency('gtk+-3.0'),
+    dependency('libhandy-0.0'),
     dependency('gee-0.8'),
     dependency('libsoup-2.4'),
     dependency('json-glib-1.0')
   ],
+  c_args: ['-DHANDY_USE_UNSTABLE_API'],
   install: true
 )
 

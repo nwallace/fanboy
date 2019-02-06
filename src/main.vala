@@ -20,5 +20,6 @@
  */
 
 public int main(string[] args) {
+  Hdy.init(ref args);
   return new Fanboy.Application().run(args);
 }

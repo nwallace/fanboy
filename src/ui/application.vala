@@ -2,9 +2,18 @@
 
 class Fanboy.Application : Gtk.Application {
 
+  private const string APP_ID = "com.github.nwallace.fanboy";
+  private const string PACKAGE_VERSION = "0.0.0";
+
+  private const GLib.ActionEntry[] ACTION_ENTRIES = {
+    { "about", display_about }
+  };
+
+  private Gtk.Window window;
+
   public Application() {
     Object(
-      application_id: "com.github.nwallace.fanboy",
+      application_id: APP_ID,
       flags: ApplicationFlags.FLAGS_NONE
     );
   }
@@ -18,6 +27,26 @@ class Fanboy.Application : Gtk.Application {
     var controller = new Fanboy.Controllers.Tournaments();
     controller.load_tournaments((Fanboy.UI.ApplicationWindow) window);
 
+    this.window = window;
+    add_action_entries(ACTION_ENTRIES, window);
     window.present();
+  }
+
+  public void display_about() {
+    string[] authors = {
+      "Nathan Wallace <nathan@nosuchthingastwo.com>"
+    };
+    Gtk.show_about_dialog(
+      this.window,
+      "authors", authors,
+      "program-name", "Fanboy",
+      "title", "About Fanboy",
+      "comments", "Watch your favorite eSports, spoiler free.",
+      "copyright", "© 2018 Nathan Wallace",
+      "license-type", Gtk.License.GPL_3_0,
+      "logo-icon-name", APP_ID,
+      "version", PACKAGE_VERSION,
+      "website", "https://github.com/nwallace/fanboy",
+      "wrap-license", true);
   }
 }

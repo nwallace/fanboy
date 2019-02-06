@@ -1,14 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
+
+  <object class="GtkPopover" id="hamburger_menu_popover">
+    <child>
+      <object class="GtkBox" id="hamburger_menu_box">
+        <property name="visible">True</property>
+        <property name="margin">12</property>
+        <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkModelButton">
+            <property name="can_focus">True</property>
+            <property name="text" translatable="yes">About Fanboy</property>
+            <property name="action-name">app.about</property>
+            <property name="visible">True</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+
   <template class="FanboyUIApplicationWindow" parent="GtkApplicationWindow">
     <property name="title" translatable="yes">Fanboy</property>
     <property name="default-width">360</property>
     <property name="default-height">640</property>
     <child type="titlebar">
-      <object class="GtkHeaderBar">
-        <property name="show-close-button">True</property>
-        <property name="title">Fanboy</property>
+      <object class="HdyTitleBar">
         <property name="visible">True</property>
+        <child>
+          <object class="GtkHeaderBar">
+            <property name="show-close-button">True</property>
+            <property name="title">Fanboy</property>
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkMenuButton" id="hamburger_menu_button">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="focus_on_click">False</property>
+                <property name="popover">hamburger_menu_popover</property>
+                <child>
+                  <object class="GtkImage">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="icon_name">open-menu-symbolic</property>
+                  </object>
+                </child>
+              </object>
+              <packing>
+                <property name="pack_type">end</property>
+              </packing>
+            </child>
+          </object>
+        </child>
       </object>
     </child>
 
