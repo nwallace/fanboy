@@ -24,6 +24,7 @@ class Fanboy.UI.ApplicationWindow : Gtk.ApplicationWindow {
     this.tournament_list.remove(this.loading_spinner);
     var label = new Gtk.Label(@"Oops! $message");
     label.visible = true;
+    label.wrap = true;
     this.tournament_list.add(label);
   }
 

@@ -27,26 +27,60 @@
       <object class="HdyTitleBar">
         <property name="visible">True</property>
         <child>
-          <object class="GtkHeaderBar">
-            <property name="show-close-button">True</property>
-            <property name="title">Fanboy</property>
+          <object class="HdyLeaflet" id="header">
             <property name="visible">True</property>
+            <property name="child-transition-type">slide</property>
+            <property name="mode-transition-type">slide</property>
             <child>
-              <object class="GtkMenuButton" id="hamburger_menu_button">
+              <object class="GtkHeaderBar" id="sidebar_header">
+                <property name="show-close-button">True</property>
+                <property name="title">Fanboy</property>
                 <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="focus_on_click">False</property>
-                <property name="popover">hamburger_menu_popover</property>
+              </object>
+              <packing>
+                <property name="name">sidebar</property>
+              </packing>
+            </child>
+
+            <child>
+              <object class="GtkSeparator">
+                <property name="visible">True</property>
+                <style>
+                  <class name="sidebar"/>
+                </style>
+              </object>
+              <packing>
+                <property name="name">separator</property>
+              </packing>
+            </child>
+
+            <child>
+              <object class="GtkHeaderBar" id="content_header">
+                <property name="show-close-button">True</property>
+                <property name="title">Fanboy</property>
+                <property name="visible">True</property>
+                <property name="hexpand">True</property>
                 <child>
-                  <object class="GtkImage">
+                  <object class="GtkMenuButton" id="hamburger_menu_button">
                     <property name="visible">True</property>
-                    <property name="can_focus">False</property>
-                    <property name="icon_name">open-menu-symbolic</property>
+                    <property name="can_focus">True</property>
+                    <property name="focus_on_click">False</property>
+                    <property name="popover">hamburger_menu_popover</property>
+                    <child>
+                      <object class="GtkImage">
+                        <property name="visible">True</property>
+                        <property name="can_focus">False</property>
+                        <property name="icon_name">open-menu-symbolic</property>
+                      </object>
+                    </child>
                   </object>
+                  <packing>
+                    <property name="pack_type">end</property>
+                  </packing>
                 </child>
               </object>
               <packing>
-                <property name="pack_type">end</property>
+                <property name="name">content</property>
               </packing>
             </child>
           </object>
@@ -55,21 +89,91 @@
     </child>
 
     <child>
-      <object class="GtkScrolledWindow">
+      <object class="HdyLeaflet">
         <property name="visible">True</property>
+        <property name="child-transition-duration" bind-source="header" bind-property="child-transition-duration" bind-flags="bidirectional|sync-create"/>
+        <property name="child-transition-type"     bind-source="header" bind-property="child-transition-type"     bind-flags="bidirectional|sync-create"/>
+        <property name="mode-transition-duration"  bind-source="header" bind-property="mode-transition-duration"  bind-flags="bidirectional|sync-create"/>
+        <property name="mode-transition-type"      bind-source="header" bind-property="mode-transition-type"      bind-flags="bidirectional|sync-create"/>
+        <property name="visible-child-name"        bind-source="header" bind-property="visible-child-name"        bind-flags="bidirectional|sync-create"/>
+
         <child>
-          <object class="GtkBox" id="tournament_list">
-            <property name="orientation">vertical</property>
+          <object class="GtkBox" id="sidebar">
             <property name="visible">True</property>
+            <property name="orientation">vertical</property>
             <child>
-              <object class="GtkSpinner" id="loading_spinner">
+              <object class="GtkLabel">
                 <property name="visible">True</property>
-                <property name="active">True</property>
+                <property name="label">CS:GO</property>
+              </object>
+            </child>
+            <child>
+              <object class="GtkLabel">
+                <property name="visible">True</property>
+                <property name="label">Starcraft II</property>
               </object>
             </child>
           </object>
+          <packing>
+            <property name="name">sidebar</property>
+          </packing>
+        </child>
+
+        <child>
+          <object class="GtkSeparator">
+            <property name="visible">True</property>
+            <style>
+              <class name="sidebar"/>
+            </style>
+          </object>
+          <packing>
+            <property name="name">separator</property>
+          </packing>
+        </child>
+
+        <child>
+          <object class="GtkScrolledWindow" id="content">
+            <property name="visible">True</property>
+            <child>
+              <object class="GtkBox" id="tournament_list">
+                <property name="visible">True</property>
+                <property name="orientation">vertical</property>
+                <property name="hexpand">True</property>
+                <child>
+                  <object class="GtkSpinner" id="loading_spinner">
+                    <property name="visible">True</property>
+                    <property name="active">True</property>
+                  </object>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="name">content</property>
+          </packing>
         </child>
       </object>
     </child>
   </template>
+
+  <object class="HdyHeaderGroup">
+    <headerbars>
+      <headerbar name="sidebar_header"/>
+      <headerbar name="content_header"/>
+    </headerbars>
+  </object>
+  <object class="GtkSizeGroup" id="sidebar_size_group">
+    <property name="mode">horizontal</property>
+    <widgets>
+      <widget name="sidebar_header"/>
+      <widget name="sidebar"/>
+    </widgets>
+  </object>
+  <object class="GtkSizeGroup" id="content_size_group">
+    <property name="mode">horizontal</property>
+    <widgets>
+      <widget name="content_header"/>
+      <widget name="content"/>
+    </widgets>
+  </object>
 </interface>
