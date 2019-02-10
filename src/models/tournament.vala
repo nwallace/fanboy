@@ -1,10 +1,25 @@
 public class Fanboy.Models.Tournament : Object {
 
-  public string name { get; private set; }
-  public string logo_uri { get; private set; }
+  public string title     { get; private set; }
+  public string name      { get; private set; }
+  public Date starts      { get; private set; }
+  public Date ends        { get; private set; }
+  public string uri       { get; private set; }
+  public string? logo_uri { get; private set; }
 
   public Tournament(Json.Object data) {
-    this.name = data.get_string_member("title");
-    this.logo_uri = "https://images.techhive.com/images/idge/imported/article/nww/2014/01/012914-gnome-logo-100275262-orig.jpg";
+    this.title    = data.get_string_member("title");
+    this.name     = data.get_string_member("name");
+    this.starts   = parse_date(data.get_string_member("starts"));
+    this.ends     = parse_date(data.get_string_member("ends"));
+    this.logo_uri = data.get_string_member("logo_uri");
+  }
+
+  private Date? parse_date(string date_str) {
+    if (date_str == null)
+      return null;
+    var date = new Date();
+    date.set_parse(date_str);
+    return date;
   }
 }

@@ -2,7 +2,7 @@
 
 public class Fanboy.Remotes.Tournaments : Object {
 
-  const string REMOTE_URI = "https://jsonplaceholder.typicode.com/albums";
+  const string REMOTE_URI = "http://localhost:9292/api/v1/titles/csgo/tournaments";
 
   public Soup.Session session { get; private set; }
 
@@ -51,7 +51,7 @@ public class Fanboy.Remotes.Tournaments : Object {
 
     public Gee.LinkedList<Fanboy.Models.Tournament> get_tournaments() {
       var tournaments = new Gee.LinkedList<Fanboy.Models.Tournament>();
-      foreach (Json.Node tournament_data in this.parsed_root.get_array().get_elements()) {
+      foreach (Json.Node tournament_data in this.parsed_root.get_object().get_array_member("tournaments").get_elements()) {
         var tournament = new Fanboy.Models.Tournament(tournament_data.get_object());
         tournaments.add(tournament);
       }
