@@ -18,7 +18,7 @@ public class Fanboy.Models.Tournament : Object {
   private Date? parse_date(string date_str) {
     if (date_str == null)
       return null;
-    var date = new Date();
+    var date = Date();
     date.set_parse(date_str);
     return date;
   }

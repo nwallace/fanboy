@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="FanboyUITitleListItem" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="halign">center</property>
+    <child>
+      <object class="FanboyUIWebImage" id="logo_image">
+        <property name="width">128</property>
+        <property name="margin">8</property>
+      </object>
+    </child>
+  </template>
+</interface>

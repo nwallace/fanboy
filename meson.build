@@ -7,15 +7,18 @@ sources = [
   join_paths('src', 'main.vala'),
 
   join_paths('src', 'remotes', 'response.vala'),
+  join_paths('src', 'remotes', 'titles.vala'),
   join_paths('src', 'remotes', 'tournaments.vala'),
 
   join_paths('src', 'ui', 'application.vala'),
   join_paths('src', 'ui', 'application-window.vala'),
-  join_paths('src', 'ui', 'tournament-list-item.vala'),
   join_paths('src', 'ui', 'web-image.vala'),
+  join_paths('src', 'ui', 'title-list-item.vala'),
+  join_paths('src', 'ui', 'tournament-list-item.vala'),
 
-  join_paths('src', 'controllers', 'tournaments.vala'),
+  join_paths('src', 'controller.vala'),
 
+  join_paths('src', 'models', 'title.vala'),
   join_paths('src', 'models', 'tournament.vala'),
 
   join_paths('src', 'utils', 'images.vala')

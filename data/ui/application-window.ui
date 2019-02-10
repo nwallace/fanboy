@@ -102,15 +102,9 @@
             <property name="visible">True</property>
             <property name="orientation">vertical</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkSpinner" id="title_loading_spinner">
                 <property name="visible">True</property>
-                <property name="label">CS:GO</property>
-              </object>
-            </child>
-            <child>
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="label">Starcraft II</property>
+                <property name="active">True</property>
               </object>
             </child>
           </object>
@@ -140,7 +134,7 @@
                 <property name="orientation">vertical</property>
                 <property name="hexpand">True</property>
                 <child>
-                  <object class="GtkSpinner" id="loading_spinner">
+                  <object class="GtkSpinner" id="tournament_loading_spinner">
                     <property name="visible">True</property>
                     <property name="active">True</property>
                   </object>

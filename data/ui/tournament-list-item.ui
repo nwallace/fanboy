@@ -5,6 +5,7 @@
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
+        <property name="margin">8</property>
         <child>
           <object class="FanboyUIWebImage" id="logo_image">
             <property name="width">36</property>
