@@ -2,6 +2,7 @@
 <interface>
   <template class="FanboyUITournamentListItem" parent="GtkEventBox">
     <property name="visible">True</property>
+    <signal name="button-press-event" handler="on_selected" object="FanboyUITournamentListItem" after="no" swapped="no"/>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
@@ -9,6 +10,7 @@
         <child>
           <object class="FanboyUIWebImage" id="logo_image">
             <property name="width">36</property>
+            <property name="margin-right">12</property>
           </object>
         </child>
         <child>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="FanboyUITournament" parent="GtkBox">
+    <property name="visible">True</property>
+    <property name="margin">8</property>
+    <child>
+      <object class="FanboyUIWebImage" id="logo_image">
+        <property name="width">36</property>
+        <property name="margin-right">12</property>
+      </object>
+    </child>
+    <child>
+      <object class="GtkLabel" id="name_label">
+        <property name="visible">True</property>
+        <property name="wrap">True</property>
+      </object>
+    </child>
+  </template>
+</interface>

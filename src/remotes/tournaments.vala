@@ -2,8 +2,6 @@
 
 public class Fanboy.Remotes.Tournaments : Object {
 
-  const string REMOTE_URI = "http://localhost:9292/api/v1/titles/csgo/tournaments";
-
   public Soup.Session session { get; private set; }
 
   construct {
@@ -12,9 +10,9 @@ public class Fanboy.Remotes.Tournaments : Object {
     }
   }
 
-  public async Fanboy.Remotes.Response get_tournaments() {
+  public async Fanboy.Remotes.Response get_tournaments(string uri) {
     SourceFunc callback = get_tournaments.callback;
-    var message = new Soup.Message("GET", REMOTE_URI);
+    var message = new Soup.Message("GET", uri);
     ThreadFunc<bool> run = () => {
       this.session.send_message(message);
       Idle.add((owned) callback);

@@ -15,6 +15,7 @@ sources = [
   join_paths('src', 'ui', 'web-image.vala'),
   join_paths('src', 'ui', 'title-list-item.vala'),
   join_paths('src', 'ui', 'tournament-list-item.vala'),
+  join_paths('src', 'ui', 'tournament.vala'),
 
   join_paths('src', 'controller.vala'),
 

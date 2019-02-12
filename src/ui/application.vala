@@ -26,7 +26,6 @@ class Fanboy.Application : Gtk.Application {
 
     var controller = new Fanboy.Controller((Fanboy.UI.ApplicationWindow) window);
     controller.load_titles();
-    controller.load_tournaments();
 
     this.window = window;
     add_action_entries(ACTION_ENTRIES, window);
