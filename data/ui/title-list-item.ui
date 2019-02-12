@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="FanboyUITitleListItem" parent="GtkBox">
+  <template class="FanboyUITitleListItem" parent="GtkEventBox">
     <property name="visible">True</property>
     <property name="halign">center</property>
+    <signal name="button-press-event" handler="on_selected" object="FanboyUITitleListItem" after="no" swapped="no"/>
     <child>
       <object class="FanboyUIWebImage" id="logo_image">
         <property name="width">128</property>

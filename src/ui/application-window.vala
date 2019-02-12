@@ -33,6 +33,9 @@ class Fanboy.UI.ApplicationWindow : Gtk.ApplicationWindow {
   }
 
   public void display_tournaments(Gee.LinkedList<Fanboy.Models.Tournament> tournaments) {
+    foreach (Gtk.Widget child in this.tournaments_list.get_children()) {
+      this.tournaments_list.remove(child);
+    }
     foreach (Fanboy.Models.Tournament tournament in tournaments) {
       register_tournament(tournament);
     }
@@ -56,6 +59,10 @@ class Fanboy.UI.ApplicationWindow : Gtk.ApplicationWindow {
   private Fanboy.UI.TitleListItem display_title(Fanboy.Models.Title title) {
     var list_item = new Fanboy.UI.TitleListItem(title);
     this.sidebar.add(list_item);
+    list_item.selected.connect((title) => {
+      var controller = new Fanboy.Controller(this);
+      controller.load_tournaments(title);
+    });
     return list_item;
   }
 
@@ -64,8 +71,5 @@ class Fanboy.UI.ApplicationWindow : Gtk.ApplicationWindow {
     this.tournaments_list.add(list_item);
     list_item.selected.connect(this.display_tournament);
     return list_item;
-  }
-
-  private void empty(Gtk.Widget widget) {
   }
 }
